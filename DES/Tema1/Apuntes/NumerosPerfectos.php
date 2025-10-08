@@ -56,7 +56,7 @@ hacer esto con recursividad
 
 function triangulo($simbolo = '*', $fila = 1) {       
     if ($fila > 5) return '';
-    return str_repeat($simbolo, $fila) . "\n" . triangulo($simbolo, $fila + 1);
+    return str_repeat($simbolo, $fila) . "\n" . triangulo($simbolo, $fila - 1);
 }
 
 echo triangulo();

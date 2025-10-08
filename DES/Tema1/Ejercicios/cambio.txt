@@ -1,0 +1,44 @@
+Cambio para 45.45 euros: 4545 centimos
+Desglose:
+2000 centimos: 2
+500 centimos: 1
+20 centimos: 2
+5 centimos: 1
+
+Cambio para € : 0 centimos
+Desglose:
+
+Cambio para 45.45€ : 4545 centimos
+Desglose:
+2000 centimos: 2
+500 centimos: 1
+20 centimos: 2
+5 centimos: 1
+
+Cambio para 45€ : 4500 centimos
+Desglose:
+2000 centimos: 2
+500 centimos: 1
+
+Cambio para 1000.99€ : 100099 centimos
+Desglose:
+50000 centimos: 2
+50 centimos: 1
+20 centimos: 2
+5 centimos: 1
+2 centimos: 2
+
+Cambio para 40.50€ : 4050 centimos
+Desglose:
+2000 centimos: 2
+50 centimos: 1
+
+Cambio para 402.181€ : 40218 centimos
+Desglose:
+20000 centimos: 2
+200 centimos: 1
+10 centimos: 1
+5 centimos: 1
+2 centimos: 1
+1 centimos: 1
+

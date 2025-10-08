@@ -64,6 +64,39 @@ verificarCambioExacto($cantidad, $precio) true(se puede exacto)/false
 crear un archivo con eso que sea cambio.txt
 */
 
-$denominaciones = [50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+
+function aCentimos($euros) {
+    return (int)round($euros * 100);
+}
+
+function desgloseCambio($euros) {
+    $cantidad = aCentimos($euros);
+    $denominaciones = [50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+    $desglose = [];
+    
+    foreach ($denominaciones as $denominacion) {
+        while ($cantidad >= $denominacion) {
+            if (!isset($desglose[$denominacion])) {
+                $desglose[$denominacion] = 0;
+            }
+            $desglose[$denominacion]++;
+            $cantidad -= $denominacion;
+        }
+    }
+    
+    return $desglose;
+}
+
+
+$archivo = fopen("cambio.txt", "a");
+$€ = $argv[1];
+fwrite($archivo, "Cambio para $€" . "€ : " . aCentimos($€) . " centimos\n");
+fwrite($archivo, "Desglose:\n");
+$desglose = desgloseCambio($€);
+foreach ($desglose as $valor => $cantidad){
+    fwrite($archivo, "$valor centimos: $cantidad\n");
+}
+fwrite($archivo, "\n");
+fclose($archivo);
 
 ?>

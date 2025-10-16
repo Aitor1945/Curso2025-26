@@ -21,7 +21,7 @@ $notas = [
 ];
 
 
-function calcularMedia($alumno, $notas) {
+function calcularMedia($notas) {
     return round(array_sum($alumno) / count($alumno));
     //foreach ($notas[$alumno] as $nota) {
     //    $suma += $nota;
@@ -34,19 +34,15 @@ function notaMaxima($alumno, $notas) {
 }
 
 function estaAprobado($alumno, $notas) {
-    foreach ($notas[$alumno] as $nota) {
-        if ($nota < 5) {
-            return false;
-        }
-    }
-    return true;
+$media = calcularMedia($notas[$alumno], $notas);
+return $media >= 5 ? "Aprobado" : "No Aprobado";
 }
 
 function mejorAlumno($notas) {
     $mejor = "";
     $maxMedia = 0;
     foreach ($notas as $alumno => $notasAlumno) {
-        $media = calcularMedia($notasAlumno, $notas);
+        $media = calcularMedia($notasAlumno);
         if ($media > $maxMedia) {
             $maxMedia = $media;
             $mejor = $alumno;

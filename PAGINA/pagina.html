@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miniweb Práctica 1</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora Simple</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>¡Bienvenidos a la Miniweb!</h1>
-<p id="hora">La hora actual se mostrará aquí.</p>
-<button onclick="mostrarHora()">Mostrar hora</button>
-<script src="script.js"></script>
+  <div class="calculator">
+    <h1>Calculadora</h1>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    
+    <div class="buttons">
+      <button onclick="calcular('+')">+</button>
+      <button onclick="calcular('-')">−</button>
+      <button onclick="calcular('*')">×</button>
+      <button onclick="calcular('/')">÷</button>
+      <button onclick="calcular('%')">%</button>
+      <button onclick="calcular('^')">^</button>
+    </div>
+
+    <div class="result" id="resultado">Resultado: </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

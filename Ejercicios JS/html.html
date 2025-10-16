@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparar Números</title>
+    <script>
+        function compareNumber() {
+            const userInput = prompt("Introduce un número:");
+            const userNum = parseFloat(userInput);
+
+            if (isNaN(userNum)) {
+                alert("Por favor, introduce un número válido");
+            } else if (userNum > 10) {
+                alert("Tu número es mayor que 10");
+            } else if (userNum < 10) {
+                alert("Tu número es menor que 10");
+            } else {
+                alert("Tu número es igual a 10");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Comparar tu número con 10</h2>
+    <button onclick="compareNumber()">Comparar número</button>
+</body>
+</html>

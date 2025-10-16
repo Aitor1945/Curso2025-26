@@ -54,12 +54,25 @@ hacer esto con recursividad
 *****
 */
 
-function triangulo($simbolo = '*', $fila = 1) {       
+/*function triangulo($simbolo = '*', $fila = 1) {       
     if ($fila > 5) return '';
     return str_repeat($simbolo, $fila) . "\n" . triangulo($simbolo, $fila - 1);
 }
-
 echo triangulo();
+*/
 
+
+//caso base 1 = "*"
+
+function tri($n, $i){
+    if ($n == 1){
+        return "*";
+    }else{
+        return tri($n-1, $i)."\n".str_repeat("*", $n);
+    }
+
+}
+
+echo tri(8,1);
 
 ?>

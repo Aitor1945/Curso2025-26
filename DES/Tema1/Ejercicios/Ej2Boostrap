@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-md bg-body-tertiary px-3">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="/img/Gragas-Esq.-icon.png" height="60" alt="Logo">
+      <span class="ms-2 fw-bold">Gragas</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Historia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Habilidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Skins</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CARRUSEL -->
+<section>
+  <div id="carouselExampleAutoplaying" class="carousel slide w-75 mx-auto" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/img/Gragas_1.webp" class="d-block w-100" alt="Buzo">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/Gragas_3.webp" class="d-block w-100" alt="SrGragas">
+      </div>
+      <div class="carousel-item">
+        <img src="/img/Gragas_4.webp" class="d-block w-100" alt="Papa Noel">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</section>
+
+<!-- CARDS -->
+<div class="container mt-5">
+  <div class="row g-4">
+    <!-- Card 1 -->
+    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="card text-bg-warning h-100">
+        <div class="card-header">Tonel explosivo <img src="/img/GragasR.png"></div>
+        <div class="card-body">
+          <h5 class="card-title">R</h5>
+          <p class="card-text">Gragas arroja su tonel hacia un lugar, causando daño y empujando a los enemigos.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="card text-bg-danger h-100">
+        <div class="card-header">Barrigazo<img src="/img/GragasE.png"></div>
+        <div class="card-body">
+          <h5 class="card-title">E</h5>
+          <p class="card-text">Carga hacia un enemigo, lo aturde y daña a los cercanos.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="card text-bg-success h-100">
+        <div class="card-header">Furia ebria<img src="/img/GragasW.png"></div>
+        <div class="card-body">
+          <h5 class="card-title">W</h5>
+          <p class="card-text">Reduce daño recibido y potencia su siguiente ataque.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="card text-bg-secondary h-100">
+        <div class="card-header">Barril rodante<img src="/img/GragasQ.png"></div>
+        <div class="card-body">
+          <h5 class="card-title">Q</h5>
+          <p class="card-text">Hace rodar un barril que explota tras unos segundos o al activarlo.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
+      <div class="card text-bg-primary h-100">
+        <div class="card-header">Hora feliz<img src="/img/GragasPassiveHeal.png"></div>
+        <div class="card-body">
+          <h5 class="card-title">Pasiva</h5>
+          <p class="card-text">Gragas se cura al usar habilidades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Otras Cards-->
+<div class="container my-5">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="p-4 border bg-light h-100">
+        <h4>Historia de Gragas</h4>
+        <p>Gragas es un enorme y beligerante cervecero que busca la bebida perfecta en Freljord. Su búsqueda lo ha llevado a vivir aventuras salvajes.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-4 border bg-light h-100">
+        <h4>Estilo de juego</h4>
+        <p>Gragas combina control de masas, daño explosivo y una gran capacidad de supervivencia, ideal para la jungla o la línea superior.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="bg-dark text-white py-4">
+  <div class="container d-flex justify-content-between flex-wrap">
+
+    <div>
+      <a href="#" class="text-white me-3 text-decoration-none">Facebook</a>
+      <a href="#" class="text-white me-3 text-decoration-none">Twitter</a>
+      <a href="#" class="text-white me-3 text-decoration-none">Instagram</a>
+    </div>
+
+    <div>
+      <a href="#" class="text-white me-3 text-decoration-none">Contacto</a>
+      <a href="#" class="text-white text-decoration-none">Términos</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

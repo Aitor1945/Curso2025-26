@@ -17,6 +17,6 @@ class Libro {
 
     }
     public function mostrarInformacion() {
-        echo "- Título: {$this->titulo}, Autor: {$this->autor}, Estado: {$this->estado}\n";
+        echo "- Título: {$this->titulo}, Autor: {$this->autor}, Estado: {$this->estado}<br>";
     }
 }

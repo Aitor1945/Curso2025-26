@@ -1,0 +1,167 @@
+class Partido {
+    public $id;
+    public $parejaA;
+    public $parejaB;
+    public $ronda;
+    public $marcador;
+
+    public function __construct($id, $parejaA, $parejaB, $ronda) {
+        $this->id = $id;
+        $this->parejaA = $parejaA;
+        $this->parejaB = $parejaB;
+        $this->ronda = $ronda;
+    }
+
+    public function jugar() {
+        $setsA = 0;
+        $setsB = 0;
+        $sets = [];
+
+        while ($setsA < 2 && $setsB < 2) {
+            $ganador = rand(0, 1); // 0: A gana el set, 1: B gana el set
+            $x = rand(0, 4);
+            if ($ganador === 0) {
+                $sets[] = "6-$x";
+                $setsA++;
+            } else {
+                $sets[] = "$x-6";
+                $setsB++;
+            }
+        }
+
+        $this->marcador = implode(", ", $sets);
+    }
+
+    public function mostrarResultado() {
+        return "[$this->ronda] Partido #$this->id: $this->parejaA vs $this->parejaB -> $this->marcador";
+    }
+
+    public function getGanador() {
+        $sets = explode(", ", $this->marcador);
+        $setsA = 0;
+        $setsB = 0;
+
+        foreach ($sets as $set) {
+            list($a, $b) = explode("-", $set);
+            if ($a == 6) $setsA++;
+            else $setsB++;
+        }
+
+        return $setsA > $setsB ? $this->parejaA : $this->parejaB;
+    }
+
+    public function getPerdedor() {
+        return $this->getGanador() === $this->parejaA ? $this->parejaB : $this->parejaA;
+    }
+}
+
+class PartidoFinal extends Partido {
+    public $mvp;
+
+    public function jugar() {
+        parent::jugar();
+        $ganador = $this->getGanador();
+        $this->mvp = "Jugador destacado de $ganador";
+    }
+}
+
+class Cuadro {
+    public $parejas;
+    public $partidos = [];
+
+    public function __construct($parejas) {
+        $this->parejas = $parejas;
+    }
+
+    public function generarPartidos() {
+        for ($i = 0; $i < 8; $i += 2) {
+            $id = ($i / 2) + 1;
+            $partido = new Partido($id, $this->parejas[$i], $this->parejas[$i + 1], "Cuartos");
+            $this->partidos[] = $partido;
+        }
+    }
+
+    public function simularTorneo() {
+        $id = 5; // Semis comienzan con partido #5
+
+        // Jugar cuartos
+        $ganadoresCuartos = [];
+        foreach ($this->partidos as $partido) {
+            if ($partido->ronda === "Cuartos") {
+                $partido->jugar();
+                $ganadoresCuartos[] = $partido->getGanador();
+            }
+        }
+
+        // Semifinales
+        $semis = [
+            new Partido($id++, $ganadoresCuartos[0], $ganadoresCuartos[1], "Semifinal"),
+            new Partido($id++, $ganadoresCuartos[2], $ganadoresCuartos[3], "Semifinal")
+        ];
+
+        $ganadoresSemis = [];
+        foreach ($semis as $semi) {
+            $semi->jugar();
+            $ganadoresSemis[] = $semi->getGanador();
+            $this->partidos[] = $semi;
+        }
+
+        // Final
+        $final = new PartidoFinal($id, $ganadoresSemis[0], $ganadoresSemis[1], "Final");
+        $final->jugar();
+        $this->partidos[] = $final;
+
+        return [
+            $final->getGanador(),
+            $final->getPerdedor(),
+            $final->mvp
+        ];
+    }
+}
+
+
+date_default_timezone_set("Europe/Madrid");
+
+$parejas = [
+    "García / López",
+    "Martín / Ruiz",
+    "Santos / Ortega",
+    "Pérez / Molina",
+    "Vega / Navarro",
+    "Iglesias / Romero",
+    "Crespo / Domínguez",
+    "Serrano / Castro",
+];
+
+// Crear cuadro y generar partidos
+$cuadro = new Cuadro($parejas);
+$cuadro->generarPartidos();
+
+// Simular torneo
+list($campeon, $subcampeon, $mvp) = $cuadro->simularTorneo();
+
+// Mostrar por pantalla
+foreach ($cuadro->partidos as $partido) {
+    echo $partido->mostrarResultado() . "\n";
+}
+
+echo "\nCampeón: $campeon\n";
+echo "Subcampeón: $subcampeon\n";
+echo "MVP de la final: $mvp\n";
+
+// Crear acta
+$fecha = date("Y-m-d H:i:s");
+$archivo = fopen("acta_torneo.txt", "w");
+
+fwrite($archivo, "ACTA DEL TORNEO DE PÁDEL\n\n");
+fwrite($archivo, "Fecha: $fecha\n\n");
+
+foreach ($cuadro->partidos as $partido) {
+    fwrite($archivo, $partido->mostrarResultado() . "\n");
+}
+
+fwrite($archivo, "\nCampeón: $campeon\n");
+fwrite($archivo, "Subcampeón: $subcampeon\n");
+fwrite($archivo, "MVP de la final: $mvp\n");
+
+fclose($archivo);

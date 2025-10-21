@@ -35,6 +35,7 @@ for ($i=0; $i < count($libs); $i++ ){
 
 }
 
+$biblioteca->prestarLibro($libro10);
 $biblioteca->mostrarLibrosDisponibles();
 
 

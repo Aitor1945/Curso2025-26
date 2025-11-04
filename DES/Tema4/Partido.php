@@ -1,4 +1,5 @@
 <?php
+require_once "Cuadro.php";
 class Partido {
     public $id;
     public $parejaA;
@@ -37,22 +38,34 @@ class Partido {
     
     public function mostrarResultado() {
 
-
+        return "[$this->ronda] Partido #$this->id: $this->parejaA vs $this->parejaB -> $this->marcador";
 
     }
 
 
     public function getGanador(){
-$texto = "";
-return $texto;
 
+        $sets = explode(", ", $this->marcador);
+        $setsA = 0;
+        $setsB = 0;
+
+        foreach ($sets as $set) {
+            list($a, $b) = explode("-", $set);
+            if ($a == 6){
+                $setsA++;
+            } elseif ($b == 6) {
+                $setsB++;
+            }
+        }
+
+        return $setsA > $setsB ? $this->parejaA : $this->parejaB;
 
     }
 
 
     public function getPerdedor() {
 
-
+        return $this->getGanador() === $this->parejaA ? $this->parejaB : $this->parejaA;
 
 
     }

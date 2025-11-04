@@ -2,138 +2,230 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>MEDAC Viajes</title>
+    <title>MEDAC Travel · Agencia de Viajes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css"/>
-  </head>
-  <body>
-    <header>
-      <h1>MEDAC Travel · Agencia de Viajes</h1>
-      <p>Calcula el presupuesto de tu viaje de fin de curso al instante ✈️🏨🚗</p>
-    </header>
-    <main>
-      <section class="card" aria-labelledby="form-title">
-        <header><h2 id="form-title">Datos del viajero y del viaje</h2></header>
-        <div class="content">
-          <form id="form-viaje" onsubmit="event.preventDefault(); calcular_viaje();">
-            <fieldset>
-              <div class="row">
-                <div>
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" placeholder="Tu nombre" autocomplete="name" />
-                </div>
-                <div>
-                  <label for="viajeros">Nº de viajeros</label>
-                  <input type="number" id="viajeros" min="1" value="1" />
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <label for="destino">Destino</label>
-                  <select id="destino">
-                    <option value="" disabled selected>Elige un destino</option>
-                    <option value="Buenos Aires">Buenos Aires</option>
-                    <option value="Nueva York">Nueva York</option>
-                    <option value="Ciudad del Cabo">Ciudad del Cabo</option>
-                    <option value="El Cairo">El Cairo</option>
-                    <option value="Estambul">Estambul</option>
-                    <option value="Roma">Roma</option>
-                    <option value="Tokio">Tokio</option>
-                    <option value="Sídney">Sídney</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="estancia">Estancia (días)</label>
-                  <input type="number" id="estancia" min="1" placeholder="p. ej., 7" />
-                </div>
-              </div>
-
-              <div class="grid-3">
-                <div>
-                  <label for="hotel_cat">Hotel</label>
-                  <select id="hotel_cat">
-                    <option value="3">3★ (base)</option>
-                    <option value="4">4★ (x1.35)</option>
-                    <option value="5">5★ (x1.8)</option>
-                  </select>
-                  <small>Precio por habitación doble</small>
-                </div>
-                <div>
-                  <label for="coche">Alquiler de coche</label>
-                  <select id="coche">
-                    <option value="ninguno">Sin coche</option>
-                    <option value="eco">Económico</option>
-                    <option value="mediano">Mediano</option>
-                    <option value="suv">SUV</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="seguro">Seguro</label>
-                  <select id="seguro">
-                    <option value="ninguno">Sin seguro</option>
-                    <option value="basico">Básico</option>
-                    <option value="completo">Completo</option>
-                  </select>
-                </div>
-              </div>
-
-              <label for="comentarios" style="margin-top:.6rem">Comentarios</label>
-              <textarea id="comentarios" rows="3" placeholder="¿Fechas tentativas, presupuesto máximo, preferencias...?"></textarea>
-            </fieldset>
-
-            <div class="actions">
-              <button type="button" class="secondary" onclick="location.reload()">Limpiar</button>
-              <button type="submit">Calcular presupuesto</button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <section class="card" aria-labelledby="budget-title">
-        <header><h2 id="budget-title">Presupuesto estimado</h2></header>
-        <div class="content">
-          <div class="grid-3">
-            <div>
-              <label for="vuelo">Vuelo</label>
-              <input type="text" id="vuelo" disabled />
-            </div>
-            <div>
-              <label for="hotel">Hotel</label>
-              <input type="text" id="hotel" disabled />
-            </div>
-            <div>
-              <label for="coche_total">Coche</label>
-              <input type="text" id="coche_total" disabled />
-            </div>
-          </div>
-
-          <div class="note ok" id="nota-validacion" style="display:none"></div>
-
-          <hr style="margin:16px 0;border:none;border-top:1px solid #e5e7eb" />
-
-          <div class="totals">
-            <div>
-              <label for="bruto">Subtotal</label>
-              <input type="text" id="bruto" disabled />
-            </div>
-            <div>
-              <label for="iva">IVA (21%)</label>
-              <input type="text" id="iva" disabled />
-            </div>
-            <div>
-              <label for="neto">Total</label>
-              <input type="text" id="neto" disabled />
-            </div>
-          </div>
-          <p class="muted" style="margin-top:.6rem">
-            * El precio es orientativo e incluye vuelos, alojamiento y extras seleccionados.
-          </p>
-        </div>
-      </section>
-    </main>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link href="styles.css" rel="stylesheet">
     <script src="script.js"></script>
-    <footer>
-      © <span id="year"></span> MEDAC Travel — Licencia turística X-123578264. Atención 24/7.
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        min-height: 100vh;
+      }
+      header {
+        background: linear-gradient(90deg, #0d6efd, #0b5ed7);
+      }
+      .card {
+        border: none;
+        border-radius: 0.8rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #007bff, #0056d2);
+        border: none;
+      }
+      footer {
+        background: #0d0d0d;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    <!-- ENCABEZADO -->
+    <header class="text-white text-center py-5 shadow-sm">
+      <h1 class="fw-bold display-5 mb-2">
+        <i class="bi bi-globe-americas me-2"></i>MEDAC Travel
+      </h1>
+      <p class="lead mb-0">
+        Calcula el presupuesto de tu viaje de fin de curso al instante ✈️🏨🚗
+      </p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container my-5">
+      <div class="row g-4">
+        <!-- FORMULARIO -->
+        <section class="col-lg-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-primary text-white d-flex align-items-center">
+              <i class="bi bi-person-fill me-2 fs-4"></i>
+              <h2 class="h5 mb-0">Datos del viajero y del viaje</h2>
+              <span class="badge bg-light text-primary ms-auto">Formulario</span>
+            </div>
+            <div class="card-body bg-white">
+              <form id="form-viaje" onsubmit="event.preventDefault(); calcular_viaje();">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="viajeros" class="form-label">Nº de viajeros</label>
+                    <input type="number" id="viajeros" class="form-control" min="1" value="1" />
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="destino" class="form-label">Destino</label>
+                    <select id="destino" class="form-select">
+                      <option value="" disabled selected>Elige un destino</option>
+                      <option>Buenos Aires</option>
+                      <option>Nueva York</option>
+                      <option>Ciudad del Cabo</option>
+                      <option>El Cairo</option>
+                      <option>Estambul</option>
+                      <option>Roma</option>
+                      <option>Tokio</option>
+                      <option>Sídney</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="estancia" class="form-label">Estancia (días)</label>
+                    <input
+                      type="number"
+                      id="estancia"
+                      class="form-control"
+                      min="1"
+                      placeholder="p. ej., 7"
+                    />
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label for="hotel_cat" class="form-label">Hotel</label>
+                    <select id="hotel_cat" class="form-select">
+                      <option value="3">3★ (base)</option>
+                      <option value="4">4★ (x1.35)</option>
+                      <option value="5">5★ (x1.8)</option>
+                    </select>
+                    <small class="text-muted">Precio por habitación doble</small>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="coche" class="form-label">Alquiler de coche</label>
+                    <select id="coche" class="form-select">
+                      <option value="ninguno">Sin coche</option>
+                      <option value="eco">Económico</option>
+                      <option value="mediano">Mediano</option>
+                      <option value="suv">SUV</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="seguro" class="form-label">Seguro</label>
+                    <select id="seguro" class="form-select">
+                      <option value="ninguno">Sin seguro</option>
+                      <option value="basico">Básico</option>
+                      <option value="completo">Completo</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="comentarios" class="form-label">Comentarios</label>
+                  <textarea
+                    id="comentarios"
+                    class="form-control"
+                    rows="3"
+                    placeholder="¿Fechas tentativas, presupuesto máximo, preferencias...?"
+                  ></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary">
+                    <i class="bi bi-eraser me-1"></i> Limpiar
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-calculator me-1"></i> Calcular presupuesto
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="col-lg-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-success text-white d-flex align-items-center">
+              <i class="bi bi-cash-coin me-2 fs-4"></i>
+              <h2 class="h5 mb-0">Presupuesto estimado</h2>
+              <span class="badge bg-light text-success ms-auto">Resultado</span>
+            </div>
+            <div class="card-body bg-white">
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label class="form-label">Vuelo</label>
+                  <input type="text" id="vuelo" class="form-control" disabled />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Hotel</label>
+                  <input type="text" id="hotel" class="form-control" disabled />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Coche</label>
+                  <input type="text" id="coche_total" class="form-control" disabled />
+                </div>
+              </div>
+
+              <div id="nota-validacion" class="alert alert-warning d-none"></div>
+
+              <hr />
+
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label class="form-label">Subtotal</label>
+                  <input type="text" id="bruto" class="form-control" disabled />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">IVA (21%)</label>
+                  <input type="text" id="iva" class="form-control" disabled />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Total</label>
+                  <input
+                    type="text"
+                    id="neto"
+                    class="form-control fw-bold text-success"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <p class="text-muted small mb-0">
+                * El precio es orientativo e incluye vuelos, alojamiento y extras seleccionados.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- PIE -->
+    <footer class="text-center py-4 mt-5 text-white">
+      © <span id="year"></span> MEDAC Travel — Licencia turística X-123578264 · Atención 24/7 🌍
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

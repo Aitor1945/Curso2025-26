@@ -116,16 +116,16 @@
 <div class="container my-5">
   <div class="row g-4">
     <div class="col-md-6">
-      <div class="p-4 border bg-light h-100">
-        <h4>Historia de Gragas</h4>
-        <p>Gragas es un enorme y beligerante cervecero que busca la bebida perfecta en Freljord. Su búsqueda lo ha llevado a vivir aventuras salvajes.</p>
-      </div>
+    <div class="form-floating">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
     </div>
     <div class="col-md-6">
-      <div class="p-4 border bg-light h-100">
-        <h4>Estilo de juego</h4>
-        <p>Gragas combina control de masas, daño explosivo y una gran capacidad de supervivencia, ideal para la jungla o la línea superior.</p>
-      </div>
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
     </div>
   </div>
 </div>

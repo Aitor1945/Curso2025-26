@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background-color: blue;
+  height: 2000px; /* espacio para scrollear */
+}
+
+/* Container con borde y altura suficiente */
+.container {
+  border: 2px solid black;
+  height: 1000px; /* altura mayor al viewport para ver el sticky */
+  margin: 50px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* Sticky centrado arriba */
+.first {
+  width: 1500px;
+  height: 200px;
+  background-color: red;
+  border: 2px solid black;
+  position: sticky;
+  top: 20px;
+  z-index: 2;
+}
+
+/* Fixed a la izquierda */
+.second {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+  border: 2px solid black;
+  position: absolute;
+  top: 300px;
+  left: 20px;
+  z-index: 1;
+}
+
+/* Fixed a la derecha */
+.last {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  border: 2px solid black;
+  position: absolute;
+  top: 300px;
+  right: 20px;
+  z-index: 1;
+}

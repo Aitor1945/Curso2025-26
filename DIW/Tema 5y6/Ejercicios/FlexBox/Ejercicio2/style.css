@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  background-color: blue;
+}
+.parent{
+   border: 5px solid black;
+   width: 250px;
+   height: 1000px;
+   box-sizing: border-box;
+
+}
+.container{
+    height: 150px;
+    width: 150px;
+    padding: 20px;
+    background: white;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    left: 50px;
+}
+.container2{
+    height: 150px;
+    width: 150px;
+    padding: 20px;
+    background: white;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0px;
+    left: 50px;
+}
+.parent1{
+   border: 5px solid black;
+   width: 250px;
+   height: 1000px;
+   box-sizing: border-box;
+   position: relative;
+
+}
+.container3{
+    height: 150px;
+    width: 150px;
+    padding: 20px;
+    background: white;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+}

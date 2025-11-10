@@ -1,0 +1,92 @@
+$Oscuro: black;
+$Claro: white;
+$Color-carta: #324b3e;
+$Fondo: #474040;
+
+
+@mixin carta {
+  border: 1px solid $Claro;
+  padding: 20px;
+  background-color: $Color-carta;
+  color: $Claro;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  width: 700px;
+  gap: 20px;
+}
+
+@mixin boton($a, $b) {
+  background-color: $a;
+  color: $b;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin cambiar-fondo($color,$color2) {
+  background-color: $color;
+  color: $color2;
+}
+
+/* Fondo general */
+body {
+  background-color: $Fondo;
+  color: $Claro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  @include carta;
+
+  .imgen img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .contenido {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .texto {
+    color: $Oscuro;
+    flex: 1;
+    text-align: left;
+  }
+
+  .botones {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+  }
+
+  .Dark {
+    @include boton($Oscuro, $Claro);
+    &:hover{
+        @include cambiar-fondo($Claro,$Oscuro);
+    }
+  }
+
+  .Light {
+    @include boton($Claro, $Oscuro);
+    &:hover{
+        @include cambiar-fondo($Oscuro,$Claro);
+  }
+}
+}

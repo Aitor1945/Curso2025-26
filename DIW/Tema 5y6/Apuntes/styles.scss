@@ -1,0 +1,52 @@
+$color_fondo: #f4f4f4;
+$white: #be1d1d;
+$gris_claro: #489930;
+$negro: #000000;
+$font: Arial, sans-serif;
+
+@mixin center-flex(){
+    background: $negro;
+}
+@mixin color-fondo($color-secundario){
+    background-color: $color-secundario;
+}
+
+
+body{
+    font-family: $font;
+    @include center-flex();
+    margin: 0;
+    padding: 20px;
+}
+.articulo{
+    @include color-fondo($color_fondo);
+    border: 1px solid $gris_claro;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px $negro;
+    .Titulo{
+    color: $negro;
+}
+    .autor{
+    font-size: 0.9em;
+    color: $gris_claro;
+    margin-bottom: 10px;
+}
+    p {
+      a {
+    text-decoration: none;
+    }
+   }
+}
+div{
+    text-align: center;
+
+    a{
+        text-decoration: none;
+        font-size: 25px;
+        color: $negro;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

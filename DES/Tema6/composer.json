@@ -6,6 +6,11 @@
         "psr-4": {
             "Usuario\\Tema6\\": "src/"
         }
+    },    
+    "autoload-dev": {
+        "psr-4": {
+            "Usuario\\Tema6\\Tests\\": "Tests/"
+        }
     },
     "authors": [
         {
